@@ -1,7 +1,16 @@
+
+var searchBtn = document.getElementById('search-button');
+document.getElementById('search-field').addEventListener('keypress', function(event){
+    if(event.key == 'Enter'){
+        searchBtn.click()
+    }
+})
+
+
 const searchSong = async () => {
     const searchField = document.getElementById('search-field').value;
     const url = `https://api.lyrics.ovh/suggest/${searchField}`
-
+    toggleSpinner(true)
     //load data
     fetch(url)
         .then(res => res.json())
@@ -48,14 +57,15 @@ const displaySongs = songs => {
     </div>
     </div>`
         songContainer.appendChild(songDiv);
-
-    });
+        toggleSpinner(false);
+    })
+    
 }
 
 // lyrics 
-const getLyric = (artist, lyric) => {
+const getLyric = async (artist, lyric) => {
     const url = `https://api.lyrics.ovh/v1/${artist}/${lyric}`
-   
+    toggleSpinner(true)
     try{
         const res = await fetch(url);
         const data = await res.json();
@@ -70,5 +80,16 @@ const getLyric = (artist, lyric) => {
 const displayLyrics = lyrics => {
     const lyricsDiv = document.getElementById('single-lyrics');
     lyricsDiv.innerText = lyrics;
+    toggleSpinner(false)
+}
+
+const toggleSpinner = (show) => {
+    const spinner = document.getElementById('loading-spinner');
+    if(show){
+        spinner.classList.remove('d-none');
+    }
+    else{
+        spinner.classList.add('d-none');
+    }
 
 }

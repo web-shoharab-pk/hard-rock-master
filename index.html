@@ -20,7 +20,7 @@
             <a class="navbar-brand" href="index.html">
                 <img src="images/logo.png" alt="Hard Rock Solution">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId"   aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                 <img src="images/toggler-icon.svg" alt="">
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
@@ -32,7 +32,8 @@
                         <a class="nav-link" href="#">Link</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Dropdown</a>
                         <div class="dropdown-menu" aria-labelledby="dropdownId">
                             <a class="dropdown-item" href="#">Action 1</a>
                             <a class="dropdown-item" href="#">Action 2</a>
@@ -47,7 +48,16 @@
                 <h1 class="text-center">Hard Rock Lyric Search</h1>
                 <div class="search-box my-5">
                     <input id="search-field" type="text" class="form-control" placeholder="Enter your artist song name">
-                    <button onclick="searchSong()" class="btn btn-success search-btn">Search</button>
+                    <button id="search-button" onclick="searchSong()" class="btn btn-success search-btn">Search</button>
+                </div>
+            </div>
+
+            <!-- spinner -->
+            <div id="loading-spinner" class="d-none">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border text-danger" role="status">
+                        <span class="visually-hidden"></span>
+                    </div>
                 </div>
             </div>
 
@@ -57,9 +67,9 @@
 
             </h3>
             <div id="single-lyrics" class="single-lyrics text-center">
-                
+
             </div>
-        
+
             <div id="song-container" class="search-result col-md-8 mx-auto py-4">
                 <!--  -->
             </div>
